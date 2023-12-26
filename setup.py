@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='quickutil',
-    version='0.0.0',
+    version='0.0.5',
     author='roninmaster21',
     author_email='',
     description='',
