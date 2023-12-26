@@ -42,12 +42,6 @@ class qfile:
         shutil.move(self.dir,new_path)
 
     def copy(self,dst,copyfunction=shutil.copy):
-        """if lvl==0:
-            shutil.copyfile(self.dir,dst)
-        if lvl==1:
-            shutil.copy(self.dir,dst)
-        if lvl==2:
-            shutil.copy2(self.dir,dst)"""
         copyfunction(self.dir,dst)
 
     def exists(self):
