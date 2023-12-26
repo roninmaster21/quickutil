@@ -2,8 +2,6 @@ import os
 import shutil
 from . import qdir
 
-copylevels = {"0":shutil.copyfile,"1":shutil.copy,"2":shutil.copy2}
-
 class qfile:
     def __init__(self,file_dir):
         self.dir = file_dir
@@ -31,7 +29,8 @@ class qfile:
             file.writelines(lines)
 
     def create(self):
-        open(self.dir,"x").close()
+        if not os.path.exists(self.dir):
+            open(self.dir,"x").close()
 
     def rename(self,new_name):
         os.rename(self.dir, new_name)
@@ -42,11 +41,14 @@ class qfile:
     def move(self, new_path):
         shutil.move(self.dir,new_path)
 
-    def copy(self,dst,lvl=0):
+    def copy(self,dst,copyfunction=shutil.copy):
         """if lvl==0:
             shutil.copyfile(self.dir,dst)
         if lvl==1:
             shutil.copy(self.dir,dst)
         if lvl==2:
             shutil.copy2(self.dir,dst)"""
-        copylevels[lvl](self,dst)
+        copyfunction(self.dir,dst)
+
+    def exists(self):
+        return os.path.exists(self.exists())
