@@ -1,8 +1,6 @@
 import os
 import shutil
 
-copylevels = {"0":shutil.copyfile,"1":shutil.copy,"2":shutil.copy2}
-
 def getdir():
     return os.getcwd()
 
@@ -24,5 +22,5 @@ def remove(path):
 def move(path,new_path):
     shutil.move(path, new_path)
 
-def copy(path,dst,lvl=0):
-    shutil.copytree(path,dst,copy_function=copylevels[lvl])
+def copy(path,dst,copyfunction):
+    shutil.copytree(path,dst,copy_function=copyfunction)
